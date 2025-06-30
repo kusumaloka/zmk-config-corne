@@ -9,6 +9,15 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+// ---------------------------
+// Mod-Tap Macros (tap-preferred + 300ms)
+// ---------------------------
+#define MT_CTRL_D  &mt LCTRL D       { flavor = "tap-preferred"; tapping-term-ms = <300>; }
+#define MT_LSFT_F  &mt LEFT_SHIFT F  { flavor = "tap-preferred"; tapping-term-ms = <300>; }
+#define MT_RSFT_J  &mt RIGHT_SHIFT J { flavor = "tap-preferred"; tapping-term-ms = <300>; }
+#define MT_RCTL_K  &mt RCTRL K       { flavor = "tap-preferred"; tapping-term-ms = <300>; }
+
+
 / {
     keymap {
         compatible = "zmk,keymap";
@@ -22,7 +31,7 @@
 
             bindings = <
 &kp TAB    &kp Q  &kp W  &kp E        &kp R             &kp T        &kp Y    &kp U              &kp I        &kp O    &kp P     &kp BSPC
-&kp LCTRL  &kp A  &kp S  &mt LCTRL D  &mt LEFT_SHIFT F  &kp G        &kp H    &mt RIGHT_SHIFT J  &mt RCTRL K  &kp L    &kp SEMI  &kp SQT
+&kp LCTRL  &kp A  &kp S  MT_CTRL_D  MT_LSFT_F  &kp G        &kp H    MT_RSFT_J  MT_RCTL_K  &kp L    &kp SEMI  &kp SQT
 &kp LSHFT  &kp Z  &kp X  &kp C        &kp V             &kp B        &kp N    &kp M              &kp COMMA    &kp DOT  &kp FSLH  &kp ESC
                          &kp LGUI     &mo 1             &kp SPACE    &kp RET  &mo 2              &kp RALT
             >;
