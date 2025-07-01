@@ -11,6 +11,11 @@
 
 &mt { flavor = "tap-preferred"; };
 
+&msc {
+    trigger-period-ms = <10>;
+    delay-ms = <10>;
+};
+
 / {
     keymap {
         compatible = "zmk,keymap";
