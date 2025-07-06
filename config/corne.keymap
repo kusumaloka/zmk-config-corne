@@ -17,6 +17,22 @@
 };
 
 / {
+    macros {
+        ctrl_alt_right: ctrl_alt_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LCTRL &kp LEFT_ALT &kp RIGHT>;
+            label = "CTRL_ALT_RIGHT";
+        };
+
+        ctrl_alt_left: ctrl_alt_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LCTRL &kp LEFT_ALT &kp LEFT>;
+            label = "CTRL_ALT_LEFT";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -43,10 +59,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp N1  &kp N2  &kp N3    &kp N4  &kp N5       &kp N6         &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&kp LCTRL  &trans  &trans  &trans    &trans  &trans       &kp PAGE_UP    &trans    &kp UP    &trans     &trans  &trans
-&kp LSHFT  &trans  &trans  &trans    &trans  &trans       &kp PAGE_DOWN  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
-                           &kp LGUI  &trans  &kp SPACE    &kp RET        &mo 3     &kp RALT
+&kp TAB    &kp N1  &kp N2  &kp N3    &kp N4          &kp N5             &kp N6         &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
+&kp LCTRL  &trans  &trans  &trans    &trans          &trans             &kp PAGE_UP    &trans    &kp UP    &trans     &trans  &trans
+&kp LSHFT  &trans  &trans  &trans    &ctrl_alt_left  &ctrl_alt_right    &kp PAGE_DOWN  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
+                           &kp LGUI  &trans          &kp SPACE          &kp RET        &mo 3     &kp RALT
             >;
         };
 
@@ -65,7 +81,7 @@
             >;
         };
 
-        layer_3 {
+        combine_layer {
             bindings = <
 &trans      &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F6          &kp F7          &kp F8          &kp F9           &kp F10               &kp DELETE
 &trans      &trans        &trans        &trans        &kp F11       &kp F12         &msc SCRL_UP    &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &kp C_BRIGHTNESS_INC  &kp C_VOLUME_UP
